@@ -1,0 +1,18 @@
+@page "{id:int}"
+@model TodoManager.Pages.Tasks.EditModel
+@{
+    ViewData["Title"] = "Редактировать задачу";
+}
+<h2>Редактировать задачу</h2>
+<form method="post">
+    <input type="hidden" asp-for="Input.Id" />
+    <div asp-validation-summary="All"></div>
+    <label asp-for="Input.Title">Заголовок</label>
+    <input asp-for="Input.Title" />
+    <span asp-validation-for="Input.Title"></span>
+    <label asp-for="Input.Description">Описание</label>
+    <textarea asp-for="Input.Description"></textarea>
+    <label asp-for="Input.IsCompleted">Выполнена</label>
+    <input asp-for="Input.IsCompleted" type="checkbox" />
+    <button type="submit">Сохранить</button>
+</form>

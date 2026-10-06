@@ -1,0 +1,32 @@
+@page
+@model TodoManager.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Админ-панель";
+}
+<h2>Админ-панель</h2>
+<table>
+    <thead>
+        <tr><th>Email</th><th>Имя</th><th>Роли</th><th>Изменить роль</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var u in Model.Users)
+    {
+        <tr>
+            <td>@u.Email</td>
+            <td>@u.FullName</td>
+            <td>@string.Join(", ", u.Roles)</td>
+            <td>
+                <form method="post" asp-page-handler="ChangeRole">
+                    <input type="hidden" name="userId" value="@u.Id" />
+                    <select name="newRole">
+                        <option value="User">User</option>
+                        <option value="Author">Author</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <button type="submit">Применить</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

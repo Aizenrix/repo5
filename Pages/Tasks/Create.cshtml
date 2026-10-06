@@ -1,0 +1,15 @@
+@page
+@model TodoManager.Pages.Tasks.CreateModel
+@{
+    ViewData["Title"] = "Создать задачу";
+}
+<h2>Создать задачу</h2>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <label asp-for="Input.Title">Заголовок</label>
+    <input asp-for="Input.Title" />
+    <span asp-validation-for="Input.Title"></span>
+    <label asp-for="Input.Description">Описание</label>
+    <textarea asp-for="Input.Description"></textarea>
+    <button type="submit">Создать</button>
+</form>

@@ -1,0 +1,11 @@
+@page "{id:int}"
+@model TodoManager.Pages.Tasks.DeleteModel
+@{
+    ViewData["Title"] = "Удалить задачу";
+}
+<h2>Удалить задачу "@Model.Task?.Title"?</h2>
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Task?.Id" />
+    <button type="submit">Удалить</button>
+    <a href="/Tasks">Отмена</a>
+</form>

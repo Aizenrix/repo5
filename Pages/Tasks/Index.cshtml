@@ -1,0 +1,28 @@
+@page
+@model TodoManager.Pages.Tasks.IndexModel
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
+    ViewData["Title"] = "Задачи";
+}
+<h2>Задачи</h2>
+<a href="/Tasks/Create">Создать задачу</a>
+<ul>
+@foreach (var task in Model.Tasks)
+{
+    var canEdit = (await AuthorizationService.AuthorizeAsync(User, task, "CanEditTask")).Succeeded;
+    <li>
+        <strong>@task.Title</strong> — @task.Description
+        @if (task.IsCompleted) { <span>[Выполнена]</span> }
+        else
+        {
+            <button class="complete-btn" data-id="@task.Id">Отметить выполненной</button>
+        }
+        @if (canEdit)
+        {
+            <a href="/Tasks/Edit/@task.Id">Редактировать</a>
+            <a href="/Tasks/Delete/@task.Id">Удалить</a>
+        }
+    </li>
+}
+</ul>

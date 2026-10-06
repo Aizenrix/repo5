@@ -1,0 +1,37 @@
+### Логин (получить токен)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@todo.com",
+  "password": "Admin123!"
+}
+
+### Получить задачи без токена (должен вернуть 401)
+GET http://localhost:5000/api/tasks
+
+### Получить задачи с токеном (замените YOUR_TOKEN)
+GET http://localhost:5000/api/tasks
+Authorization: Bearer YOUR_TOKEN
+
+### Создать задачу с токеном
+POST http://localhost:5000/api/tasks
+Authorization: Bearer YOUR_TOKEN
+Content-Type: application/json
+
+{
+  "title": "Купить хлеб",
+  "description": "Ржаной хлеб"
+}
+
+### Обновить refresh-токен
+POST http://localhost:5000/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "YOUR_REFRESH_TOKEN"
+}
+
+### Выйти на всех устройствах
+POST http://localhost:5000/api/auth/logout-all
+Authorization: Bearer YOUR_TOKEN
