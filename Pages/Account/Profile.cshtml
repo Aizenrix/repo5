@@ -1,0 +1,36 @@
+@page
+@model ProfileModel
+@{
+    ViewData["Title"] = "Профиль";
+}
+<h2>Профиль</h2>
+<p>Email: @Model.Email</p>
+<p>2FA: @(Model.TwoFactorEnabled ? "Включена" : "Отключена")</p>
+@if (!Model.TwoFactorEnabled)
+{
+    <h3>Включить 2FA</h3>
+    @if (Model.QrCodeUri != null)
+    {
+        <p>Отсканируйте QR-код:</p>
+        <img src="@Model.QrCodeUri" alt="QR Code" />
+        <p>Или введите ключ вручную: @Model.SharedKey</p>
+        <form method="post" asp-page-handler="Enable2FA">
+            <label>Код подтверждения</label>
+            <input asp-for="VerificationCode" maxlength="6" />
+            <span asp-validation-for="VerificationCode"></span>
+            <button type="submit">Включить 2FA</button>
+        </form>
+    }
+    else
+    {
+        <form method="post" asp-page-handler="Setup2FA">
+            <button type="submit">Настроить 2FA</button>
+        </form>
+    }
+}
+else
+{
+    <form method="post" asp-page-handler="Disable2FA">
+        <button type="submit">Отключить 2FA</button>
+    </form>
+}

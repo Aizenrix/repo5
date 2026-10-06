@@ -1,0 +1,22 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+<h2>Регистрация</h2>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <label asp-for="Input.FullName">Полное имя</label>
+    <input asp-for="Input.FullName" />
+    <span asp-validation-for="Input.FullName"></span>
+    <label asp-for="Input.Email">Email</label>
+    <input asp-for="Input.Email" />
+    <span asp-validation-for="Input.Email"></span>
+    <label asp-for="Input.Password">Пароль</label>
+    <input asp-for="Input.Password" type="password" />
+    <span asp-validation-for="Input.Password"></span>
+    <label asp-for="Input.ConfirmPassword">Подтвердите пароль</label>
+    <input asp-for="Input.ConfirmPassword" type="password" />
+    <span asp-validation-for="Input.ConfirmPassword"></span>
+    <button type="submit">Зарегистрироваться</button>
+</form>

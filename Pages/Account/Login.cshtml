@@ -1,0 +1,18 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Вход";
+}
+<h2>Вход</h2>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <label asp-for="Input.Email">Email</label>
+    <input asp-for="Input.Email" />
+    <span asp-validation-for="Input.Email"></span>
+    <label asp-for="Input.Password">Пароль</label>
+    <input asp-for="Input.Password" type="password" />
+    <span asp-validation-for="Input.Password"></span>
+    <label asp-for="Input.RememberMe">Запомнить меня</label>
+    <input asp-for="Input.RememberMe" type="checkbox" />
+    <button type="submit">Войти</button>
+</form>

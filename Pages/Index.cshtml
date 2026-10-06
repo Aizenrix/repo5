@@ -1,0 +1,16 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+<h1>Todo-менеджер</h1>
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <p>Добро пожаловать, <strong>@Model.FullName</strong>!</p>
+    <a href="/Tasks">Мои задачи</a>
+}
+else
+{
+    <p>Добро пожаловать!</p>
+    <a href="/Account/Login">Войти</a><text> | </text><a href="/Account/Register">Зарегистрироваться</a>
+}
