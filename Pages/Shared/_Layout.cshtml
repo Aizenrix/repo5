@@ -22,7 +22,8 @@
                 <a href="/Admin">Админ-панель</a>
             }
             <a href="/Account/Profile">Профиль</a>
-            <form method="post" action="/Account/Logout" style="display:inline">
+            <form method="post" asp-page="/Account/Logout" style="display:inline">
+                @Html.AntiForgeryToken()
                 <button type="submit">Выйти</button>
             </form>
         }

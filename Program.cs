@@ -157,6 +157,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
